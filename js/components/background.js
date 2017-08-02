@@ -21,6 +21,8 @@ const createBackground = () => {
   controls.autoRotateSpeed = -0.03
   controls.enableDamping = true
   controls.dampingFactor = 0.06
+  controls.minPolarAngle = Math.PI / 2
+  controls.maxPolarAngle = Math.PI / 2
 
   const backgroundGeo = new THREE.CylinderBufferGeometry(0, 0.3, 0.3, 4, 1)
   const backgroundMat = new THREE.MeshPhongMaterial({color: 0xffffff, shading: THREE.FlatShading})
