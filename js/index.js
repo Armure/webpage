@@ -1,14 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Main from './view/main'
-import Canvas from './view/canvas'
+import createTitle from './components/title'
+import createBackground from './components/background'
 
-class App extends React.Component {
-  render () {
-    return <Main />
-  }
-}
-
-let canvas = new Canvas()
-
-ReactDOM.render(<App />, document.getElementById('app'))
+document.body.style.margin = 0
+createTitle('JORDAN MUNROE')
+createBackground()
