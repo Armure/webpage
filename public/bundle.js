@@ -74,14 +74,23 @@ var _title = __webpack_require__(3);
 
 var _title2 = _interopRequireDefault(_title);
 
-var _background = __webpack_require__(4);
+var _links = __webpack_require__(4);
+
+var _links2 = _interopRequireDefault(_links);
+
+var _background = __webpack_require__(5);
 
 var _background2 = _interopRequireDefault(_background);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-document.body.style.margin = 0;
+document.body.style.margin = '0';
+document.body.style.width = '100%';
+document.body.style.height = '100%';
+document.body.style.overflow = 'hidden';
+
 (0, _title2.default)('JORDAN MUNROE');
+(0, _links2.default)();
 (0, _background2.default)();
 
 /***/ }),
@@ -44240,12 +44249,72 @@ exports.default = createTitle;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var createLink = function createLink(text) {
+  var link = document.createElement('h2');
+  link.innerHTML = text;
+  link.style.fontSize = '1.5vw';
+  link.style.letterSpacing = '0.5vw';
+  link.style.fontFamily = 'Century Gothic';
+  link.style.color = '#000000';
+  link.style.pointerEvents = 'all';
+  link.style.cursor = 'pointer';
+
+  link.addEventListener('mouseover', function () {
+    link.style.color = '#778899';
+  });
+
+  link.addEventListener('mouseleave', function () {
+    link.style.color = '#000000';
+  });
+
+  return link;
+};
+
+var getContainer = function getContainer() {
+  var container = document.createElement('div');
+  container.style.display = 'flex';
+  container.style.bottom = '20%';
+  container.style.justifyContent = 'space-around';
+  container.style.alignItems = 'center';
+  container.style.width = '100%';
+  container.style.position = 'absolute';
+  container.style.pointerEvents = 'none';
+  return container;
+};
+
+var createLinks = function createLinks() {
+  var container = getContainer();
+
+  var aboutMe = createLink('ABOUT');
+  container.appendChild(aboutMe);
+
+  var projects = createLink('PROJECTS');
+  container.appendChild(projects);
+
+  var contact = createLink('CONTACT');
+  container.appendChild(contact);
+
+  document.body.appendChild(container);
+};
+
+exports.default = createLinks;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _three = __webpack_require__(1);
 
 var THREE = _interopRequireWildcard(_three);
 
-__webpack_require__(5);
+__webpack_require__(6);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -44269,6 +44338,8 @@ var createBackground = function createBackground() {
   controls.autoRotateSpeed = -0.03;
   controls.enableDamping = true;
   controls.dampingFactor = 0.06;
+  controls.minPolarAngle = Math.PI / 2;
+  controls.maxPolarAngle = Math.PI / 2;
 
   var backgroundGeo = new THREE.CylinderBufferGeometry(0, 0.3, 0.3, 4, 1);
   var backgroundMat = new THREE.MeshPhongMaterial({ color: 0xffffff, shading: THREE.FlatShading });
@@ -44291,7 +44362,7 @@ var createBackground = function createBackground() {
 exports.default = createBackground;
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*** IMPORTS FROM imports-loader ***/
