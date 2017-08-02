@@ -1,6 +1,7 @@
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+
 module.exports = {
   entry: './js/index.js',
-  devtool: 'source-map',
   module: {
     loaders: [
       {
@@ -12,5 +13,8 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new UglifyJSPlugin()
+  ]
 }
